@@ -1,5 +1,6 @@
 package com.antonhulevich.eshop.config;
 
+import com.antonhulevich.eshop.domain.Role;
 import com.antonhulevich.eshop.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/users/new").hasRole("ADMIN")
+                        .requestMatchers("/users").hasAnyAuthority(Role.ROLE_ADMIN.name(),Role.ROLE_MANAGER.name())
+                        .requestMatchers("/users/new").hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -52,5 +53,19 @@ public class UserServiceImpl implements UserService{
         roles.add(new SimpleGrantedAuthority(user.getRole().name()));
 
         return new org.springframework.security.core.userdetails.User(user.getName(),user.getPassword(),roles);
+    }
+
+    @Override
+    public List<UserDto> getAll() {
+        List<User> usersList = userRepository.findAll();
+        List<UserDto> usersDtoList = usersList.stream().map(this::toDto).collect(Collectors.toList());
+        return usersDtoList;
+    }
+
+    private UserDto toDto(User user){
+        return UserDto.builder()
+                .username(user.getName())
+                .email(user.getEmail())
+                .build();
     }
 }

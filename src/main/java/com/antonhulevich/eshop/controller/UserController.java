@@ -1,5 +1,6 @@
 package com.antonhulevich.eshop.controller;
 
+import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -32,5 +35,11 @@ public class UserController {
         }
     }
 
+    @GetMapping
+    public String usersList(Model model){
+        List<UserDto> userDtoList = userService.getAll();
+        model.addAttribute("users", userDtoList);
+        return "userList";
+    }
 
 }
