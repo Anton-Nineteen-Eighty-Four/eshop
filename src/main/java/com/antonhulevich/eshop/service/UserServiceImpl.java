@@ -4,6 +4,7 @@ import com.antonhulevich.eshop.dao.UserRepository;
 import com.antonhulevich.eshop.domain.Role;
 import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,5 +69,35 @@ public class UserServiceImpl implements UserService{
                 .username(user.getName())
                 .email(user.getEmail())
                 .build();
+    }
+
+    @Override
+    public User findByName(String name) {
+        return userRepository.findFirstByName(name);
+    }
+
+    @Override
+    @Transactional
+    public void updateProfile(UserDto userDto) {
+        User savedUser = userRepository.findFirstByName(userDto.getUsername());
+        if(savedUser == null){
+            throw new RuntimeException("User with name " + userDto.getUsername() + "not foud");
+        }
+
+        boolean isChanged = false;
+
+        if(userDto.getPassword() != null && !userDto.getPassword().isEmpty()){
+            savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            isChanged = true;
+        }
+
+        if(!Objects.equals(savedUser.getEmail(), userDto.getEmail())) {
+            savedUser.setEmail(userDto.getEmail());
+            isChanged = true;
+        }
+
+        if (isChanged) {
+            userRepository.save(savedUser);
+        }
     }
 }
