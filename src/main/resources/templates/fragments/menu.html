@@ -13,7 +13,7 @@
                     <td>Menu -></td>
                     <td><a th:href="@{/}">Home</a></td>
                     <td><a th:href="@{/products}">Products</a></td>
-                    <td><a th:href="@{/users}">Users</a></td>
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MANAGER')"><a th:href="@{/users}">Users</a></td>
                 </tr>
             </table>
         </td>
