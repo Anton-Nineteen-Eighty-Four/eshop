@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findFirstByName(username);
         if(user == null){
