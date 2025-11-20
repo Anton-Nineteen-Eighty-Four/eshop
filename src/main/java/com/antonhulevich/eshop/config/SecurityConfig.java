@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true)
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
 
     private UserService userService;
@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/users").hasAnyAuthority(Role.ROLE_ADMIN.name(),Role.ROLE_MANAGER.name())
-                        .requestMatchers("/users/new").hasAuthority(Role.ROLE_ADMIN.name())
+                        //.requestMatchers("/users/new").hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )
