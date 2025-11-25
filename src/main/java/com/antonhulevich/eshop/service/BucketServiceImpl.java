@@ -11,10 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,7 +64,7 @@ public class BucketServiceImpl implements BucketService{
     }
 
     @Override
-    public BucketDto getBucketByUser(String name) {
+    public BucketDto getBucketDtoByUser(String name) {
         User user = userService.findByName(name);
 
         if(user == null || user.getBucked() == null){
@@ -95,5 +92,27 @@ public class BucketServiceImpl implements BucketService{
 
 
         return bucketDto ;
+    }
+
+    public void deleteProduct(String name, Long productId){
+        Bucket bucket = userService.findByName(name).getBucked();
+        List<Product> productList = bucket.getProducts();
+        String title = productRepository.getById(productId).getTitle();
+
+        Product productToRemove = null;
+
+        for (Product p : productList) {
+            if (Objects.equals(title, p.getTitle())) {
+                productToRemove = p;
+                break;
+            }
+        }
+
+        if (productToRemove != null) {
+            productList.remove(productToRemove);
+        }
+
+        bucket.setProducts(productList);
+        bucketRepository.save(bucket);
     }
 }

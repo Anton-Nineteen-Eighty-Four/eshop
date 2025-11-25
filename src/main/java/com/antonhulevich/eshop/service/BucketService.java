@@ -9,5 +9,6 @@ import java.util.List;
 public interface BucketService {
     Bucket createBucket(User user, List<Long> productIds);
     void addProducts(Bucket bucket, List<Long> productIds);
-    BucketDto getBucketByUser(String name);
+    BucketDto getBucketDtoByUser(String name);
+    void deleteProduct(String name, Long productId);
 }

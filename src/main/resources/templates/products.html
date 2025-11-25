@@ -18,6 +18,19 @@
         <td><a th:href="@{/products/{id}/bucket(id=${product.id})}">Add to bucket</a></td>
     </tr>
 </table>
+<form>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" id="title"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="number" id="price"></td>
+        </tr>
+    </table>
+    <button id="send" type="submit">Submit</button>
+</form>
 
 </body>
 </html>

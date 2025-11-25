@@ -24,7 +24,6 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @GetMapping("/new")
     public String newUser(Model model){
-        System.out.println("called method newUser");
         model.addAttribute("user", new UserDto());
         return "user";
     }
@@ -33,7 +32,6 @@ public class UserController {
     @GetMapping("/{name}/roles")
     @ResponseBody
     public String getRoles(@PathVariable("name") String username){
-        System.out.println("called method getRoles");
         User byName = userService.findByName(username);
         return byName.getRole().name();
     }
@@ -73,7 +71,7 @@ public class UserController {
     @PostMapping("/profile")
     public String updateProfileUser(UserDto userDto, Model model, Principal principal){
         if(principal == null || !Objects.equals(principal.getName(), userDto.getUsername())){
-            throw new RuntimeException("Yuo are not authorized");
+            throw new RuntimeException("You cannot change the user name");
         }
         if(userDto.getPassword() != null &&
                 !userDto.getPassword().isEmpty() &&
