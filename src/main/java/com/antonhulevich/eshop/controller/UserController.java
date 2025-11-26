@@ -3,7 +3,6 @@ package com.antonhulevich.eshop.controller;
 import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,10 +15,13 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/users")
-@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @GetMapping("/new")
@@ -60,10 +62,14 @@ public class UserController {
         }
         User user = userService.findByName(principal.getName());
 
-        UserDto userDto = UserDto.builder()
-                .username(user.getName())
-                .email(user.getEmail())
-                .build();
+//        UserDto userDto = UserDto.builder()
+//                .username(user.getName())
+//                .email(user.getEmail())
+//                .build();
+        UserDto userDto = new UserDto();
+        userDto.setUsername(user.getName());
+        userDto.setEmail(user.getEmail());
+
         model.addAttribute("user", userDto);
         return "profile";
     }

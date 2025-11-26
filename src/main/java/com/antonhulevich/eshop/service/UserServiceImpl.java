@@ -32,12 +32,18 @@ public class UserServiceImpl implements UserService{
         if(!userDto.getPassword().equals(userDto.getMatchingPassword())){
             throw new RuntimeException("Password is not equals");
         }
-        User user = User.builder()
-                .name(userDto.getUsername())
-                .password(passwordEncoder.encode(userDto.getPassword()))
-                .email(userDto.getEmail())
-                .role(Role.ROLE_CLIENT)
-                .build();
+//        User user = User.builder()
+//                .name(userDto.getUsername())
+//                .password(passwordEncoder.encode(userDto.getPassword()))
+//                .email(userDto.getEmail())
+//                .role(Role.ROLE_CLIENT)
+//                .build();
+
+        User user = new User();
+        user.setName(userDto.getUsername());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setEmail(userDto.getEmail());
+        user.setRole(Role.ROLE_CLIENT);
 
         userRepository.save(user);
 
@@ -70,10 +76,15 @@ public class UserServiceImpl implements UserService{
     }
 
     private UserDto toDto(User user){
-        return UserDto.builder()
-                .username(user.getName())
-                .email(user.getEmail())
-                .build();
+        UserDto userDto = new UserDto();
+        userDto.setUsername(user.getName());
+        userDto.setEmail(user.getEmail());
+
+//        return UserDto.builder()
+//                .username(user.getName())
+//                .email(user.getEmail())
+//                .build();
+        return userDto;
     }
 
     @Override
