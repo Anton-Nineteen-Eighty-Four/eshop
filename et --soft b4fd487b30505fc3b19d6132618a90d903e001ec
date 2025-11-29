@@ -1,0 +1,13 @@
+[33mb4fd487[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{0}: reset: moving to b4fd487b30505fc3b19d6132618a90d903e001ec
+[33mb4fd487[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{1}: commit: added method deleteProduct in BucketController, BucketService
+[33me06e630[m HEAD@{2}: commit: added view bucket
+[33m862bb14[m HEAD@{3}: commit: added BucketController, BucketService, BucketRepository
+[33md2d5746[m HEAD@{4}: commit: added view profile
+[33m1ffdc6e[m HEAD@{5}: commit: added in view menu to Security for field Users
+[33m564a375[m HEAD@{6}: commit: added view menu, userList, error
+[33m0bc2828[m HEAD@{7}: commit: added classes MainController, Security, UserController, UserDto, UserService, UserRepository
+[33me664200[m HEAD@{8}: commit: add sql migration
+[33m7356997[m HEAD@{9}: commit: added entity
+[33m852ca8f[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{10}: checkout: moving from develop to develop
+[33m852ca8f[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{11}: checkout: moving from master to develop
+[33m852ca8f[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{12}: commit (initial): init

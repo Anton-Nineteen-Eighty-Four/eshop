@@ -1,10 +1,6 @@
 package com.antonhulevich.eshop.dto;
 
 import com.antonhulevich.eshop.domain.Product;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
