@@ -157,7 +157,6 @@
 
     <build>
         <plugins>
-            <!-- Объединенная конфигурация maven-compiler-plugin для MapStruct -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -194,9 +193,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <schemaDirectory>
-                        ${project.basedir}/src/main/xsd
-                    </schemaDirectory>
+                    <!-- Заменили schemaDirectory на sources -->
+                    <sources>
+                        <source>${project.basedir}/src/main/resources/ws</source>
+                    </sources>
                     <outputDirectory>
                         ${project.basedir}/src/main/java
                     </outputDirectory>
