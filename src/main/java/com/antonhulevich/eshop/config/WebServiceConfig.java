@@ -1,5 +1,7 @@
 package com.antonhulevich.eshop.config;
 
+import com.antonhulevich.eshop.endpoint.GreetingEndpoint;
+import com.antonhulevich.eshop.endpoint.ProductsEndpoint;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +17,6 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig {
 
-    public static final String NAMESPACE_GREETING = "http://antonhulevich.com/eshop/ws/greeting";
-
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -26,18 +26,34 @@ public class WebServiceConfig {
     }
 
     @Bean(name = "greeting")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema xsdSchema) {
+    public DefaultWsdl11Definition defaultWsdl11Definition() {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("GreetingPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace(NAMESPACE_GREETING);
-        wsdl11Definition.setSchema(xsdSchema());
+        wsdl11Definition.setTargetNamespace(GreetingEndpoint.NAMESPACE_URL);
+        wsdl11Definition.setSchema(xsdGreetingSchema());
         return wsdl11Definition;
     }
 
-    @Bean
-    public XsdSchema xsdSchema() {
+    @Bean("greetingSchema")
+    public XsdSchema xsdGreetingSchema() {
         return new SimpleXsdSchema(new ClassPathResource("ws/greeting.xsd"));
     }
+
+    @Bean(name = "products")
+    public DefaultWsdl11Definition productWsdlDefinition(){
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("ProductPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace(ProductsEndpoint.NAMESPACE_URL);
+        wsdl11Definition.setSchema(xsdProductsSchemaSchema());
+        return wsdl11Definition;
+    }
+
+    @Bean("productsSchema")
+    public XsdSchema xsdProductsSchemaSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("ws/products.xsd"));
+    }
+
     
 }
