@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Product List</title>
+    <!--STOMP-->
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+    <!--products.js dependance: jquery-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/products.js"></script>
 </head>
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
-<table border="1" align="center">
+<table border="1" align="center" id="table">
     <tr>
         <td>Title</td>
         <td>Price</td>
@@ -18,8 +25,8 @@
         <td><a th:href="@{/products/{id}/bucket(id=${product.id})}">Add to bucket</a></td>
     </tr>
 </table>
-<form>
-    <table>
+<form style="text-align: center">
+    <table align="center">
         <tr>
             <td>Title</td>
             <td><input type="text" id="title"></td>
