@@ -16,19 +16,6 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Order {
-    public Order() {
-    }
-
-    public Order(Long id, LocalDateTime created, LocalDateTime updated, String address, BigDecimal sum, Status status, User user, List<OrderDetails> details) {
-        this.id = id;
-        this.created = created;
-        this.updated = updated;
-        this.address = address;
-        this.sum = sum;
-        this.status = status;
-        this.user = user;
-        this.details = details;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,14 +27,28 @@ public class Order {
 	private String address;
     private BigDecimal sum;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private OrderStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetails> details;
+
+    public Order() {
+    }
+
+    public Order(LocalDateTime created, LocalDateTime updated, String address, BigDecimal sum, OrderStatus status, User user, List<OrderDetails> details) {
+        this.created = created;
+        this.updated = updated;
+        this.address = address;
+        this.sum = sum;
+        this.status = status;
+        this.user = user;
+        this.details = details;
+    }
+
 
     public Long getId() {
         return id;
@@ -89,11 +90,11 @@ public class Order {
         this.sum = sum;
     }
 
-    public Status getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

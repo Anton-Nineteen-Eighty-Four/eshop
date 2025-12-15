@@ -11,16 +11,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "orders_details")
 public class OrderDetails {
-    public OrderDetails() {
-    }
-
-    public OrderDetails(Long id, BigDecimal price, BigDecimal amount, Order order, Product product) {
-        this.id = id;
-        this.price = price;
-        this.amount = amount;
-        this.order = order;
-        this.product = product;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +27,23 @@ public class OrderDetails {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    public OrderDetails() {
+    }
+
+    public OrderDetails(BigDecimal price, BigDecimal amount, Order order, Product product) {
+        this.price = price;
+        this.amount = amount;
+        this.order = order;
+        this.product = product;
+    }
+
+    public OrderDetails(Order order, Product product, Long amount) {
+        this.order = order;
+        this.product = product;
+        this.amount = new BigDecimal(amount);
+        this.price = product.getPrice();
+    }
 
     public Long getId() {
         return id;

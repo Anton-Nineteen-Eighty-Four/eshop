@@ -12,16 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 public class Product {
-    public Product() {
-    }
-
-    public Product(Long id, String title, BigDecimal price, List<Category> categories) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.categories = categories;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,6 +23,15 @@ public class Product {
         joinColumns = @JoinColumn(name = "product_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
+
+    public Product() {
+    }
+
+    public Product(String title, BigDecimal price, List<Category> categories) {
+        this.title = title;
+        this.price = price;
+        this.categories = categories;
+    }
 
     public Long getId() {
         return id;

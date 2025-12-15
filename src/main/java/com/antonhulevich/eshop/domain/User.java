@@ -9,18 +9,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    public User() {
-    }
-
-    public User(Long id, String name, String password, String email, boolean archive, Role role, Bucket bucked) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.archive = archive;
-        this.role = role;
-        this.bucked = bucked;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +24,18 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Bucket bucked;
+
+    public User() {
+    }
+
+    public User(String name, String password, String email, boolean archive, Role role, Bucket bucked) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.archive = archive;
+        this.role = role;
+        this.bucked = bucked;
+    }
 
     public Long getId() {
         return id;

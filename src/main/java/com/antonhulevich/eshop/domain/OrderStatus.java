@@ -1,6 +1,6 @@
 package com.antonhulevich.eshop.domain;
 
-public enum Status {
+public enum OrderStatus {
     NEW,
     APPROVED,
     CANCELED,
