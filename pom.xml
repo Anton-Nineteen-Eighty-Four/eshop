@@ -102,6 +102,12 @@
             <version>4.0.6</version>
         </dependency>
 
+        <!-- INTEGRATION -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-http</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
