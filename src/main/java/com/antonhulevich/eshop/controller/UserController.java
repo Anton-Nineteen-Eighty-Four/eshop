@@ -23,7 +23,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @GetMapping("/new")
     public String newUser(Model model){
         model.addAttribute("user", new UserDto());
@@ -48,6 +47,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public String usersList(Model model){
         List<UserDto> userDtoList = userService.getAll();
@@ -70,6 +70,8 @@ public class UserController {
         userDto.setUsername(user.getName());
         userDto.setEmail(user.getEmail());
 
+        userDto.setActivated(user.getActivateCode() == null);
+
         model.addAttribute("user", userDto);
         return "profile";
     }
@@ -84,11 +86,23 @@ public class UserController {
                 !Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())){
 
             model.addAttribute("user",userDto);
-            //нужно добавить сообщение, сделать это потом
             return "/profile";
         }
         userService.updateProfile(userDto);
         return "redirect:/users/profile";
     }
 
+    @GetMapping("/activate/{code}")
+    public String activateUser(Model model, @PathVariable("code") String activateCode){
+        boolean activated = userService.activateUser(activateCode);
+        model.addAttribute("activated", activated);
+        return "activate-user";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/assign-manager/{id}")
+    public String assignManagerRole(@PathVariable Long id) {
+        userService.updateRoleToManager(id);
+        return "redirect:/users";
+    }
 }

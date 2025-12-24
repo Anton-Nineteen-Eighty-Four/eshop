@@ -15,19 +15,23 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final MailSenderService mailSenderService;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, MailSenderService mailSenderService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.mailSenderService = mailSenderService;
     }
 
     @Override
+    @Transactional
     public boolean save(UserDto userDto) {
         if(!userDto.getPassword().equals(userDto.getMatchingPassword())){
             throw new RuntimeException("Password is not equals");
@@ -44,15 +48,20 @@ public class UserServiceImpl implements UserService{
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
         user.setRole(Role.ROLE_CLIENT);
+        user.setActivateCode(UUID.randomUUID().toString());
 
-        userRepository.save(user);
+        this.save(user);
 
         return true;
     }
 
     @Override
+    @Transactional
     public void save(User user) {
         userRepository.save(user);
+        if(user.getActivateCode() != null && !user.getActivateCode().isEmpty()){
+            mailSenderService.sendActivateCode(user);
+        }
     }
 
     @Override
@@ -65,7 +74,16 @@ public class UserServiceImpl implements UserService{
 
         roles.add(new SimpleGrantedAuthority(user.getRole().name()));
 
-        return new org.springframework.security.core.userdetails.User(user.getName(),user.getPassword(),roles);
+        boolean isEnabled = (user.getActivateCode() == null);
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getName(),
+                user.getPassword(),
+                isEnabled,
+                true,
+                true,
+                true,
+                roles);
     }
 
     @Override
@@ -77,8 +95,10 @@ public class UserServiceImpl implements UserService{
 
     private UserDto toDto(User user){
         UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
         userDto.setUsername(user.getName());
         userDto.setEmail(user.getEmail());
+        userDto.setRole(Role.valueOf(user.getRole().name()));
 
 //        return UserDto.builder()
 //                .username(user.getName())
@@ -115,5 +135,37 @@ public class UserServiceImpl implements UserService{
         if (isChanged) {
             userRepository.save(savedUser);
         }
+    }
+
+    @Override
+    @Transactional
+    public boolean activateUser(String activateCode) {
+        if(activateCode == null || activateCode.isEmpty()){
+            return false;
+        }
+        User user = userRepository.findFirstByActivateCode(activateCode);
+        if(user == null){
+            return false;
+        }
+
+        user.setActivateCode(null);
+        userRepository.save(user);
+
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public void updateRoleToManager(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (user.getRole() == Role.ROLE_MANAGER) {
+            user.setRole(Role.ROLE_CLIENT);
+        } else {
+            user.setRole(Role.ROLE_MANAGER);
+        }
+
+        userRepository.save(user);
     }
 }

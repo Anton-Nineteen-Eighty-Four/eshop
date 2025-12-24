@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User list</title>
@@ -8,16 +10,31 @@
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
 <table border="1">
+    <thead>
     <tr>
-        <td>Name</td>
-        <td>Email</td>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="user : ${users}">
-        <td th:text="${user.username}">Testname</td>
-        <td th:text="${user.email}">Testemail</td>
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.email}">Email</td>
+        <td th:text="${user.role}">Role</td>
+        <td>
+            <div sec:authorize="hasRole('ADMIN')">
+                <form th:action="@{/users/assign-manager/{id}(id=${user.id})}" method="post">
+                    <button type="submit"
+                            th:text="${user.role == 'ROLE_MANAGER' ? 'Revoke Manager' : 'Make Manager'}">
+                        Change Role
+                    </button>
+                </form>
+            </div>
+        </td>
     </tr>
+    </tbody>
 </table>
-<a th:href="@{/users/new}">Add new</a>
-
 </body>
 </html>

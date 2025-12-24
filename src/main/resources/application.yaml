@@ -9,3 +9,19 @@ spring:
     password: bestuser
   flyway:
     baseline-on-migrate: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: anton.hulevich.for.work@gmail.com
+    password: "siydrnpfshcsaudm"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: true
+server:
+  hostname: localhost
+  port: ${PORT:8080}

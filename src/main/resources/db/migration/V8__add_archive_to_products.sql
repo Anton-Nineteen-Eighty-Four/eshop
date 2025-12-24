@@ -1,0 +1,1 @@
+ALTER TABLE products ADD COLUMN archive BIT(1) NOT NULL DEFAULT 0;

@@ -25,16 +25,26 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Bucket bucked;
 
+    @Column(name = "activate_code")
+    private String activateCode;
+
     public User() {
     }
 
-    public User(String name, String password, String email, boolean archive, Role role, Bucket bucked) {
+    public User(String name, String password, String email, boolean archive, Role role, Bucket bucked, String activateCode) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.archive = archive;
         this.role = role;
         this.bucked = bucked;
+        this.activateCode = activateCode;
+    }
+
+    public User(Long id, String name, Role role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
     }
 
     public Long getId() {
@@ -91,5 +101,13 @@ public class User {
 
     public void setBucked(Bucket bucked) {
         this.bucked = bucked;
+    }
+
+    public String getActivateCode() {
+        return activateCode;
+    }
+
+    public void setActivateCode(String activateCode) {
+        this.activateCode = activateCode;
     }
 }

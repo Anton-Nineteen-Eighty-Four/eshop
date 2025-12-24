@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,11 +31,13 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/ws").permitAll()
+                        .requestMatchers("/users/new").permitAll()
+                        .requestMatchers("/users/activate/*").permitAll()
                         .requestMatchers("/users").hasAnyAuthority(Role.ROLE_ADMIN.name(),Role.ROLE_MANAGER.name())
-                        //.requestMatchers("/users/new").hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )
+                .httpBasic(Customizer.withDefaults())
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .failureUrl("/login-error")
