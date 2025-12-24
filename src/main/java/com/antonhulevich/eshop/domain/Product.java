@@ -1,6 +1,9 @@
 package com.antonhulevich.eshop.domain;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,6 +14,8 @@ import java.util.List;
 //@Builder
 @Entity
 @Table(name = "products")
+@SQLDelete(sql = "UPDATE products SET archive = true WHERE id = ?")
+@SQLRestriction("archive = false")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +28,9 @@ public class Product {
         joinColumns = @JoinColumn(name = "product_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
+
+    @Column(name = "archive", nullable = false)
+    private boolean archive = false;
 
     public Product() {
     }
@@ -63,5 +71,13 @@ public class Product {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public boolean isArchive() {
+        return archive;
+    }
+
+    public void setArchive(boolean archive) {
+        this.archive = archive;
     }
 }

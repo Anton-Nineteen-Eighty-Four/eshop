@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Product List</title>
-    <!--STOMP-->
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
-    <!--products.js dependance: jquery-->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/products.js"></script>
 </head>
@@ -18,14 +17,24 @@
     <tr>
         <td>Title</td>
         <td>Price</td>
+        <td>Actions</td>
+        <td sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">Manage</td>
     </tr>
     <tr th:each="product : ${products}">
         <td th:text="${product.title}">Cheese</td>
         <td th:text="${product.price}">12.0</td>
         <td><a th:href="@{/products/{id}/bucket(id=${product.id})}">Add to bucket</a></td>
+
+        <td sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
+            <form th:action="@{/products/delete/{id}(id=${product.id})}" method="post">
+                <button type="submit" style="color: red;">Remove</button>
+            </form>
+        </td>
     </tr>
 </table>
-<form style="text-align: center">
+
+<form style="text-align: center" sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
+    <h3>Add New Product</h3>
     <table align="center">
         <tr>
             <td>Title</td>

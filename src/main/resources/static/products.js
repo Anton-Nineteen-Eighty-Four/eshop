@@ -20,9 +20,16 @@ function connect() {
 // хук на интерфейс
 $(function () {
     $("form").on('submit', function (e) {
-        e.preventDefault();
+        if ($(this).attr('action') === undefined) {
+            e.preventDefault();
+        }
     });
-    $( "#send" ).click(function() { sendContent(); });
+
+    $( "#send" ).click(function() {
+        sendContent();
+        $("#title").val('');
+        $("#price").val('');
+    });
 });
 
 // отправка сообщения на сервер

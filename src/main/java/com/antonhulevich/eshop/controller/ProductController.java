@@ -6,15 +6,14 @@ import com.antonhulevich.eshop.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/products")
@@ -27,7 +26,10 @@ public class ProductController {
 
     @GetMapping
     public String list(Model model){
-        List<ProductDto> productList = productService.getAll();
+        List<ProductDto> productList = productService.getAll().stream()
+                .filter(dto -> !dto.isArchive())
+                .collect(Collectors.toList());
+
         model.addAttribute("products", productList);
         return "products";
     }
@@ -41,6 +43,7 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @PostMapping("/addProduct")
     public String addProduct(Model model){
         Product product = new Product();
@@ -57,5 +60,19 @@ public class ProductController {
     @MessageMapping("/products")
     public void messageAddProduct(ProductDto dto){
         productService.addProduct(dto);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ProductDto getById(@PathVariable Long id){
+        return productService.getById(id);
+
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id){
+        productService.delete(id);
+        return "redirect:/products";
     }
 }
