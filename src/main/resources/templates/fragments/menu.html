@@ -31,6 +31,8 @@
             <div sec:authorize="!isAuthenticated()">
                 <div>
                     Hello, Unknown, Please <a th:href="@{/login}">Login</a>
+
+                    <a th:href="@{/users/new}">Sign up</a>
                 </div>
             </div>
         </td>
