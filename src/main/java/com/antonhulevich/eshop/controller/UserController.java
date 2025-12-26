@@ -5,6 +5,8 @@ import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.service.UserService;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,16 +58,12 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profileUser(Model model, Principal principal){
-        if(principal == null){
-            throw new RuntimeException("Yuo are not authorize");
+    public String profileUser(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+        if (currentUser == null) {
+            return "redirect:/login";
         }
-        User user = userService.findByName(principal.getName());
+        User user = userService.findByName(currentUser.getUsername());
 
-//        UserDto userDto = UserDto.builder()
-//                .username(user.getName())
-//                .email(user.getEmail())
-//                .build();
         UserDto userDto = new UserDto();
         userDto.setUsername(user.getName());
         userDto.setEmail(user.getEmail());
@@ -77,9 +75,16 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    public String updateProfileUser(UserDto userDto, Model model, Principal principal){
-        if(principal == null || !Objects.equals(principal.getName(), userDto.getUsername())){
+    public String updateProfileUser(UserDto userDto, Model model, @AuthenticationPrincipal UserDetails currentUser){
+        if (currentUser == null) {
+            return "redirect:/login";
+        }
+        if(!Objects.equals(currentUser.getUsername(), userDto.getUsername())){
             throw new RuntimeException("You cannot change the user name");
+        }
+        User userInDb = userService.findByName(currentUser.getUsername());
+        if (!Objects.equals(userInDb.getEmail(), userDto.getEmail())) {
+            throw new RuntimeException("You cannot change the email");
         }
         if(userDto.getPassword() != null &&
                 !userDto.getPassword().isEmpty() &&

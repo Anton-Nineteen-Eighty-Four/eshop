@@ -58,7 +58,16 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public void save(User user) {
+        if (userRepository.findFirstByName(user.getName()) != null) {
+            throw new RuntimeException("User with name " + user.getName() + " already exists");
+        }
+
+        if (userRepository.findFirstByEmail(user.getEmail()) != null) {
+            throw new RuntimeException("User with email " + user.getEmail() + " already exists");
+        }
+
         userRepository.save(user);
+
         if(user.getActivateCode() != null && !user.getActivateCode().isEmpty()){
             mailSenderService.sendActivateCode(user);
         }
@@ -124,11 +133,6 @@ public class UserServiceImpl implements UserService{
 
         if(userDto.getPassword() != null && !userDto.getPassword().isEmpty()){
             savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
-            isChanged = true;
-        }
-
-        if(!Objects.equals(savedUser.getEmail(), userDto.getEmail())) {
-            savedUser.setEmail(userDto.getEmail());
             isChanged = true;
         }
 
