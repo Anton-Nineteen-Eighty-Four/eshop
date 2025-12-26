@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -65,6 +66,8 @@ public class UserServiceImpl implements UserService{
         if (userRepository.findFirstByEmail(user.getEmail()) != null) {
             throw new RuntimeException("User with email " + user.getEmail() + " already exists");
         }
+
+        user.setCreatedAt(LocalDateTime.now());
 
         userRepository.save(user);
 

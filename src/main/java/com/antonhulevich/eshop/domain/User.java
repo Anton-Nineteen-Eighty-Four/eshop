@@ -1,6 +1,10 @@
 package com.antonhulevich.eshop.domain;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 //@Data
 //@NoArgsConstructor
@@ -8,6 +12,7 @@ import jakarta.persistence.*;
 //@Builder
 @Entity
 @Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
     @Id
@@ -18,6 +23,9 @@ public class User {
     private String password;
     private String email;
     private boolean archive;
+    @CreatedDate
+    @Column(name = "created_at", updatable = false, nullable = false)
+    private LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -31,11 +39,12 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password, String email, boolean archive, Role role, Bucket bucked, String activateCode) {
+    public User(String name, String password, String email, boolean archive, LocalDateTime createdAt, Role role, Bucket bucked, String activateCode) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.archive = archive;
+        this.createdAt = createdAt;
         this.role = role;
         this.bucked = bucked;
         this.activateCode = activateCode;
@@ -109,5 +118,13 @@ public class User {
 
     public void setActivateCode(String activateCode) {
         this.activateCode = activateCode;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
