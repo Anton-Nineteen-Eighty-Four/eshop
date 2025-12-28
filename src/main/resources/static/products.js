@@ -43,9 +43,23 @@ function sendContent() {
 // рендер сообщения, полученного от сервера
 function renderItem(productJson) {
     var product = JSON.parse(productJson.body);
-    $("#table").append("<tr>" +
-        "<td>" +product.title +"</td>" +
-        "<td>" +product.price +"</td>" +
-        "<td><a href='/products/" + product.id +"/bucket'>Add to bucket</a></td>" +
-        "</tr>");
+
+    var html = "<tr>" +
+        "<td>" + product.title + "</td>" +
+        "<td>" + product.price + "</td>" +
+        "<td><a href='/products/" + product.id + "/bucket'>Add to bucket</a></td>";
+
+    var isManager = $("h3:contains('Add New Product')").length > 0;
+
+    if (isManager) {
+        html += "<td>" +
+            "<form action='/products/delete/" + product.id + "' method='post'>" +
+            "<button type='submit' style='color: red;'>Remove</button>" +
+            "</form>" +
+            "</td>";
+    }
+
+    html += "</tr>";
+
+    $("#table").append(html);
 }
