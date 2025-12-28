@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    # Специальный URL, который сам запустит Docker-контейнер с MySQL 8.0
+    url: jdbc:tc:mysql:8.0:///databasename?TC_REUSABLE=true
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  flyway:
+    enabled: true
