@@ -7,32 +7,41 @@
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 <h2>Your bucket</h2>
-<h3>All sum -> <b th:text="${bucket.sum}">1000</b></h3>
 
-<table border="1" align="center">
-    <tr>
-        <td>Title</td>
-        <td>Amount</td>
-        <td>Price</td>
-        <td>Sum</td>
-        <td></td>
-    </tr>
-    <tr th:each="detail : ${bucket.bucketDetail}">
-        <td th:text="${detail.title}">Cheese</td>
-        <td th:text="${detail.amount}">2</td>
-        <td th:text="${detail.price}">11.0</td>
-        <td th:text="${detail.sum}">22</td>
-        <td>
-            <form th:action="@{/bucket/remove/{productId}(productId=${detail.productId})}" method="POST">
-                <button type="submit">Удалить</button>
-            </form>
-        </td>
-    </tr>
-</table>
+<div th:if="${#lists.isEmpty(bucket.bucketDetail)}">
+    <p style="color: gray; font-size: 1.2em;">Ваша корзина пуста.</p>
+</div>
 
-<form th:action="@{/bucket}" method="post">
-    <button type="submit">Create Order</button>
-</form>
+<div th:unless="${#lists.isEmpty(bucket.bucketDetail)}">
+    <h3>All sum -> <b th:text="${bucket.sum}">1000</b></h3>
 
-</body>
-</html>
+    <table border="1" align="center">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Sum</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="detail : ${bucket.bucketDetail}">
+            <td th:text="${detail.title}">Cheese</td>
+            <td th:text="${detail.amount}">2</td>
+            <td th:text="${detail.price}">11.0</td>
+            <td th:text="${detail.sum}">22</td>
+            <td>
+                <form th:action="@{/bucket/remove/{productId}(productId=${detail.productId})}" method="POST">
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <form th:action="@{/bucket}" method="post">
+        <button type="submit">Create Order</button>
+    </form>
+</div>

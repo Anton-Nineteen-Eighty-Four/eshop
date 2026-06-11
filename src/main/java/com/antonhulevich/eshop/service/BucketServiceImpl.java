@@ -151,6 +151,5 @@ public class BucketServiceImpl implements BucketService{
         orderService.saveOrder(order);
         bucket.getProducts().clear();
         bucketRepository.save(bucket);
-
     }
 }
