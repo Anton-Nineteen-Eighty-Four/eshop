@@ -4,10 +4,6 @@ import com.antonhulevich.eshop.domain.Product;
 
 import java.math.BigDecimal;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 public class BucketDetailDto {
 
     private String title;

@@ -91,7 +91,6 @@ public class BucketServiceImpl implements BucketService{
         bucketDto.setBucketDetail(new ArrayList<>(mapByProductId.values()));
         bucketDto.aggregate();
 
-
         return bucketDto ;
     }
 

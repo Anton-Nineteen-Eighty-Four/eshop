@@ -2,10 +2,6 @@ package com.antonhulevich.eshop.dto;
 
 import com.antonhulevich.eshop.domain.Role;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 public class UserDto {
     private Long id;
     private Role role;

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -37,13 +36,6 @@ public class UserServiceImpl implements UserService{
         if(!userDto.getPassword().equals(userDto.getMatchingPassword())){
             throw new RuntimeException("Password is not equals");
         }
-//        User user = User.builder()
-//                .name(userDto.getUsername())
-//                .password(passwordEncoder.encode(userDto.getPassword()))
-//                .email(userDto.getEmail())
-//                .role(Role.ROLE_CLIENT)
-//                .build();
-
         User user = new User();
         user.setName(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -101,7 +93,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDto> getAll() {
         List<User> usersList = userRepository.findAll();
-        List<UserDto> usersDtoList = usersList.stream().map(this::toDto).collect(Collectors.toList());
+        List<UserDto> usersDtoList = usersList.stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
         return usersDtoList;
     }
 
@@ -111,11 +105,6 @@ public class UserServiceImpl implements UserService{
         userDto.setUsername(user.getName());
         userDto.setEmail(user.getEmail());
         userDto.setRole(Role.valueOf(user.getRole().name()));
-
-//        return UserDto.builder()
-//                .username(user.getName())
-//                .email(user.getEmail())
-//                .build();
         return userDto;
     }
 

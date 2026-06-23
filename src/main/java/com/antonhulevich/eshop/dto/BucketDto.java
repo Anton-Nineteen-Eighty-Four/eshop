@@ -3,10 +3,6 @@ package com.antonhulevich.eshop.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 public class BucketDto {
 
     private int amountProducts;

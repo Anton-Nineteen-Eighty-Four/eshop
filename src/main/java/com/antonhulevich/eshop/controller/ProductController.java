@@ -18,11 +18,12 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+
+    private final ProductService productService;
+
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
-    private final ProductService productService;
 
     @GetMapping
     public String list(Model model){
