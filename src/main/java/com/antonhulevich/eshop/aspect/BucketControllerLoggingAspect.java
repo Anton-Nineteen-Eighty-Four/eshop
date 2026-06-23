@@ -3,30 +3,46 @@ package com.antonhulevich.eshop.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 @Aspect
 public class BucketControllerLoggingAspect {
 
-    @Pointcut("execution(public String removeProductFromBucket(..))")
-    public void methodRemoveProductFromBucket(){}
+    private static final Logger log = LoggerFactory.getLogger(BucketControllerLoggingAspect.class);
 
-    @Before("methodRemoveProductFromBucket()")
+    @Pointcut("execution(* com.antonhulevich.eshop.controller.BucketController.*(..))")
+    private void anyBucketControllerMethod() {}
+
+    @Before("anyBucketControllerMethod()")
     public void beforeRemoveProductFromBucketOfMethodAdvice(JoinPoint joinPoint){
-        System.out.println("AOP @Before: calling method " + joinPoint.getSignature());
+        log.info("WEB REQ -> Call: {}.{}() with arguments: {}",
+                joinPoint.getTarget().getClass().getSimpleName(),
+                joinPoint.getSignature().getName(),
+                Arrays.toString(joinPoint.getArgs()));
     }
 
-    @AfterReturning("methodRemoveProductFromBucket()")
-    public void afterReturningRemoveProductFromBucketOfMethodAdvice(JoinPoint joinPoint){
-        System.out.println("AOP @AfterReturning: finished method " + joinPoint.getSignature());
+    @AfterThrowing(pointcut = "anyBucketControllerMethod()", throwing = "ex")
+    public void errorAdvice(JoinPoint joinPoint, Throwable ex) {
+        log.error("WEB ERR -> Error in {}: {}", joinPoint.getSignature().getName(), ex.getMessage());
     }
 
-    @Around("execution(public String aboutBucket(..))")
-    public Object aroundAboutBucketOfMethodAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        System.out.println("AOP @Around: before calling method " + proceedingJoinPoint.getSignature());
-        Object targetMethodResult = proceedingJoinPoint.proceed();
-        System.out.println("AOP @Around: after finished method " + proceedingJoinPoint.getSignature());
-        return targetMethodResult;
+    @Around("@annotation(org.springframework.web.bind.annotation.PostMapping)")
+    public Object profilePostMethods(ProceedingJoinPoint pjp) throws Throwable {
+        long start = System.currentTimeMillis();
+        try {
+            return pjp.proceed();
+        } finally {
+            long duration = System.currentTimeMillis() - start;
+            if (duration > 100) {
+                log.warn("PERF -> Heavy POST request {} took {} ms", pjp.getSignature().getName(), duration);
+            } else {
+                log.debug("PERF -> POST request {} executed in {} ms", pjp.getSignature().getName(), duration);
+            }
+        }
     }
 }
