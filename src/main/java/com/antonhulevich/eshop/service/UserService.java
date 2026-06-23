@@ -10,7 +10,8 @@ public interface UserService extends UserDetailsService { //security
     boolean save(UserDto userDto);
     void save(User user);
     List<UserDto> getAll();
-    User findByName(String name);
+    UserDto findByName(String name);
+    User getUserByName(String name);
     void updateProfile(UserDto userDto);
     boolean activateUser(String activateCode);
     void updateRoleToManager(Long id);

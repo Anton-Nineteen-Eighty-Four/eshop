@@ -5,7 +5,7 @@ import com.antonhulevich.eshop.domain.Role;
 public class UserDto {
     private Long id;
     private Role role;
-    private String username;
+    private String name;
     private String password;
     private String matchingPassword;
     private String email;
@@ -14,22 +14,22 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(Long id, Role role, String username, String password, String matchingPassword, String email, boolean activated) {
+    public UserDto(Long id, Role role, String name, String password, String matchingPassword, String email, boolean activated) {
         this.id = id;
         this.role = role;
-        this.username = username;
+        this.name = name;
         this.password = password;
         this.matchingPassword = matchingPassword;
         this.email = email;
         this.activated = activated;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

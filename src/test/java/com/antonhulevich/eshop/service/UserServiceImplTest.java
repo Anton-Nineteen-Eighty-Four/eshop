@@ -3,9 +3,11 @@ package com.antonhulevich.eshop.service;
 import com.antonhulevich.eshop.dao.UserRepository;
 import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
+import com.antonhulevich.eshop.mapper.UserMapper;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.Mockito;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
@@ -15,6 +17,7 @@ public class UserServiceImplTest {
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
     private MailSenderService mailSenderService;
+    private UserMapper userMapper;
 
     @BeforeAll
     static void beforeAll(){
@@ -27,8 +30,9 @@ public class UserServiceImplTest {
         passwordEncoder = Mockito.mock(PasswordEncoder.class);
         userRepository = Mockito.mock(UserRepository.class);
         mailSenderService = Mockito.mock(MailSenderService.class);
+        userMapper = org.mapstruct.factory.Mappers.getMapper(UserMapper.class);
 
-        userService = new UserServiceImpl(passwordEncoder,userRepository,mailSenderService);
+        userService = new UserServiceImpl(passwordEncoder, userRepository, mailSenderService, userMapper);
     }
 
     @AfterEach
@@ -42,7 +46,7 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void  checkFindByName(){
+    void checkFindByName(){
         //have
         String name = "Bill";
         User expectedUser = new User();
@@ -52,12 +56,13 @@ public class UserServiceImplTest {
         Mockito.when(userRepository.findFirstByName(Mockito.anyString())).thenReturn(expectedUser);
 
         //execute
-        User actualUser = userService.findByName(name);
+        UserDto actualUser = userService.findByName(name);
 
         //check
         Assertions.assertNotNull(actualUser);
-        Assertions.assertEquals(expectedUser,actualUser);
-
+        // Сравниваем точечно поля DTO и Entity, так как это разные классы
+        Assertions.assertEquals(expectedUser.getId(), actualUser.getId());
+        Assertions.assertEquals(expectedUser.getName(), actualUser.getName());
     }
 
     @Test
@@ -69,17 +74,20 @@ public class UserServiceImplTest {
         expectedUser.setName(name);
 
         Mockito.when(userRepository.findFirstByName(Mockito.eq(name))).thenReturn(expectedUser);
+        Mockito.when(userRepository.findFirstByName(Mockito.argThat(arg -> !name.equals(arg)))).thenReturn(null);
 
         //execute
-        User actualUser = userService.findByName(name);
-        User randomUser = userService.findByName(UUID.randomUUID().toString());
+        UserDto actualUser = userService.findByName(name);
 
         //check
         Assertions.assertNotNull(actualUser);
-        Assertions.assertEquals(expectedUser,actualUser);
+        Assertions.assertEquals(expectedUser.getId(), actualUser.getId());
+        Assertions.assertEquals(expectedUser.getName(), actualUser.getName());
 
-        Assertions.assertNull(randomUser);
-
+        // Метод findByName теперь бросает исключение, если юзер не найден
+        Assertions.assertThrows(UsernameNotFoundException.class, () -> {
+            userService.findByName(UUID.randomUUID().toString());
+        });
     }
 
     @Test
@@ -102,7 +110,7 @@ public class UserServiceImplTest {
     void checkSave(){
         //have
         UserDto userDto = new UserDto();
-        userDto.setUsername("name");
+        userDto.setName("name");
         userDto.setEmail("email");
         userDto.setPassword("pass");
         userDto.setMatchingPassword("pass");
@@ -117,6 +125,4 @@ public class UserServiceImplTest {
         Mockito.verify(passwordEncoder).encode(Mockito.anyString());
         Mockito.verify(userRepository).save(Mockito.any());
     }
-
-
 }

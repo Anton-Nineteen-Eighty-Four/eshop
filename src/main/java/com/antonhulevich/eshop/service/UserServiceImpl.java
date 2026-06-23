@@ -4,6 +4,7 @@ import com.antonhulevich.eshop.dao.UserRepository;
 import com.antonhulevich.eshop.domain.Role;
 import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
+import com.antonhulevich.eshop.mapper.UserMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,11 +24,13 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final MailSenderService mailSenderService;
+    private final UserMapper userMapper;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, MailSenderService mailSenderService) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, MailSenderService mailSenderService, UserMapper userMapper) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.mailSenderService = mailSenderService;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -36,15 +39,13 @@ public class UserServiceImpl implements UserService{
         if(!userDto.getPassword().equals(userDto.getMatchingPassword())){
             throw new RuntimeException("Password is not equals");
         }
-        User user = new User();
-        user.setName(userDto.getUsername());
+
+        User user = userMapper.toEntity(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setEmail(userDto.getEmail());
         user.setRole(Role.ROLE_CLIENT);
         user.setActivateCode(UUID.randomUUID().toString());
 
         this.save(user);
-
         return true;
     }
 
@@ -93,32 +94,29 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDto> getAll() {
         List<User> usersList = userRepository.findAll();
-        List<UserDto> usersDtoList = usersList.stream()
-                .map(this::toDto)
-                .collect(Collectors.toList());
-        return usersDtoList;
-    }
-
-    private UserDto toDto(User user){
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setUsername(user.getName());
-        userDto.setEmail(user.getEmail());
-        userDto.setRole(Role.valueOf(user.getRole().name()));
-        return userDto;
+        return userMapper.toDtoList(usersList);
     }
 
     @Override
-    public User findByName(String name) {
+    @Transactional
+    public UserDto findByName(String name) {
+        User user = userRepository.findFirstByName(name);
+        if (user == null) {
+            throw new UsernameNotFoundException("User Not Found With Name: " + name);
+        }
+        return userMapper.toDto(user);
+    }
+    @Override
+    public User getUserByName(String name) {
         return userRepository.findFirstByName(name);
     }
 
     @Override
     @Transactional
     public void updateProfile(UserDto userDto) {
-        User savedUser = userRepository.findFirstByName(userDto.getUsername());
+        User savedUser = userRepository.findFirstByName(userDto.getName());
         if(savedUser == null){
-            throw new RuntimeException("User with name " + userDto.getUsername() + "not foud");
+            throw new RuntimeException("User with name " + userDto.getName() + "not foud");
         }
 
         boolean isChanged = false;

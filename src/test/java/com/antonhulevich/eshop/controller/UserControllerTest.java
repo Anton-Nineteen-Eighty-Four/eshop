@@ -3,6 +3,8 @@ package com.antonhulevich.eshop.controller;
 import com.antonhulevich.eshop.config.SecurityConfig;
 import com.antonhulevich.eshop.domain.Role;
 import com.antonhulevich.eshop.domain.User;
+import com.antonhulevich.eshop.dto.UserDto;
+import com.antonhulevich.eshop.mapper.UserMapper;
 import com.antonhulevich.eshop.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,8 +41,10 @@ class UserControllerTest {
 
     @BeforeEach
     void setUp() {
+        UserDto clientUserDto = org.mapstruct.factory.Mappers.getMapper(UserMapper.class).toDto(clientUser);
+
         Mockito.when(userService.findByName(Mockito.eq(clientUser.getName())))
-                .thenReturn(clientUser);
+                .thenReturn(clientUserDto); // Возвращаем именно DTO!
     }
 
     @Test

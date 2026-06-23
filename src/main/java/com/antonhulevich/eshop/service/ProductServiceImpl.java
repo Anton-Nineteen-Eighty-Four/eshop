@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addToUserBucket(Long productId, String username) {
-        User user = userService.findByName(username);
+        User user = userService.getUserByName(username);
         if(user == null){
             throw new RuntimeException("User " + username + " not fount");
         }

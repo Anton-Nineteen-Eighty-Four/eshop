@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +34,7 @@ public class UserController {
     @GetMapping("/{name}/roles")
     @ResponseBody
     public String getRoles(@PathVariable("name") String username){
-        User byName = userService.findByName(username);
+        UserDto byName = userService.findByName(username);
         return byName.getRole().name();
     }
 
@@ -62,13 +61,7 @@ public class UserController {
         if (currentUser == null) {
             return "redirect:/login";
         }
-        User user = userService.findByName(currentUser.getUsername());
-
-        UserDto userDto = new UserDto();
-        userDto.setUsername(user.getName());
-        userDto.setEmail(user.getEmail());
-
-        userDto.setActivated(user.getActivateCode() == null);
+        UserDto userDto = userService.findByName(currentUser.getUsername());
 
         model.addAttribute("user", userDto);
         return "profile";
@@ -79,10 +72,10 @@ public class UserController {
         if (currentUser == null) {
             return "redirect:/login";
         }
-        if(!Objects.equals(currentUser.getUsername(), userDto.getUsername())){
+        if(!Objects.equals(currentUser.getUsername(), userDto.getName())){
             throw new RuntimeException("You cannot change the user name");
         }
-        User userInDb = userService.findByName(currentUser.getUsername());
+        UserDto userInDb = userService.findByName(currentUser.getUsername());
         if (!Objects.equals(userInDb.getEmail(), userDto.getEmail())) {
             throw new RuntimeException("You cannot change the email");
         }

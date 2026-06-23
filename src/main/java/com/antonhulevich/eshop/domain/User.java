@@ -6,10 +6,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)

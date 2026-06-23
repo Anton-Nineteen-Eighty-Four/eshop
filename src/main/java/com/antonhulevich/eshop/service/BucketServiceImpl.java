@@ -66,7 +66,7 @@ public class BucketServiceImpl implements BucketService{
 
     @Override
     public BucketDto getBucketDtoByUser(String name) {
-        User user = userService.findByName(name);
+        User user = userService.getUserByName(name);
 
         if(user == null || user.getBucked() == null){
             return new BucketDto();
@@ -95,7 +95,7 @@ public class BucketServiceImpl implements BucketService{
     }
 
     public void deleteProduct(String name, Long productId){
-        Bucket bucket = userService.findByName(name).getBucked();
+        Bucket bucket = userService.getUserByName(name).getBucked();
         List<Product> productList = bucket.getProducts();
         String title = productRepository.getById(productId).getTitle();
 
@@ -119,7 +119,7 @@ public class BucketServiceImpl implements BucketService{
     @Override
     @Transactional
     public void commitBucketToOrder(String username){
-        User user = userService.findByName(username);
+        User user = userService.getUserByName(username);
         if(user == null){
             throw new RuntimeException("User is not found");
         }
