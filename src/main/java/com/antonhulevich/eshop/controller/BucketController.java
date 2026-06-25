@@ -2,6 +2,8 @@ package com.antonhulevich.eshop.controller;
 
 import com.antonhulevich.eshop.dto.BucketDto;
 import com.antonhulevich.eshop.service.BucketService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +21,9 @@ public class BucketController {
     }
 
     @GetMapping("/bucket")
-    public String aboutBucket(Model model, Principal principal){
-        if(principal == null){
-            model.addAttribute("bucket", new BucketDto());
-        } else {
-            BucketDto bucketDto = bucketService.getBucketDtoByUser(principal.getName());
-            model.addAttribute("bucket", bucketDto);
-        }
+    public String aboutBucket(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+        BucketDto bucketDto = bucketService.getBucketDtoByUser(currentUser != null ? currentUser.getUsername() : null);
+        model.addAttribute("bucket", bucketDto);
         return "bucket";
     }
 

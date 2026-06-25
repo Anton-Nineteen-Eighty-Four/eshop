@@ -3,7 +3,6 @@ package com.antonhulevich.eshop.controller;
 import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.service.UserService;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +28,7 @@ public class UserController {
         return "user";
     }
 
-    @PostAuthorize("isAuthenticated() and #username == authentication.principal.username")
+    @PreAuthorize("#userDto.name == authentication.name")
     @GetMapping("/{name}/roles")
     @ResponseBody
     public String getRoles(@PathVariable("name") String username){
