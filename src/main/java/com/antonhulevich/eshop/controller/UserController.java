@@ -1,8 +1,8 @@
 package com.antonhulevich.eshop.controller;
 
-import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.service.UserService;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/users")
@@ -72,22 +71,14 @@ public class UserController {
         if (currentUser == null) {
             return "redirect:/login";
         }
-        if(!Objects.equals(currentUser.getUsername(), userDto.getName())){
-            throw new RuntimeException("You cannot change the user name");
+        try {
+            userService.updateProfile(userDto, currentUser.getUsername());
+        } catch (IllegalArgumentException | AccessDeniedException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("user", userDto);
         }
-        UserDto userInDb = userService.findByName(currentUser.getUsername());
-        if (!Objects.equals(userInDb.getEmail(), userDto.getEmail())) {
-            throw new RuntimeException("You cannot change the email");
-        }
-        if(userDto.getPassword() != null &&
-                !userDto.getPassword().isEmpty() &&
-                !Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())){
 
-            model.addAttribute("user",userDto);
-            return "/profile";
-        }
-        userService.updateProfile(userDto);
-        return "redirect:/users/profile";
+        return "profile";
     }
 
     @GetMapping("/activate/{code}")

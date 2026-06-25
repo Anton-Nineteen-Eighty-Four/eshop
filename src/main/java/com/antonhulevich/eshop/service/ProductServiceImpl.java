@@ -36,16 +36,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void addToUserBucket(Long productId, String username) {
         User user = userService.getUserByName(username);
-        if(user == null){
-            throw new RuntimeException("User " + username + " not fount");
+        if (user == null) {
+            throw new RuntimeException("User " + username + " not found");
         }
+
         Bucket bucket = user.getBucked();
         if (bucket == null) {
             Bucket newBucket = bucketService.createBucket(user, Collections.singletonList(productId));
-            user.setBucked(newBucket);
-            userService.save(user);
+            userService.assignBucketToUser(username, newBucket);
         } else {
             bucketService.addProducts(bucket, Collections.singletonList(productId));
         }

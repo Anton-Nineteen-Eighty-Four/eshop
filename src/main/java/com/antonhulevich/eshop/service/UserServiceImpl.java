@@ -1,11 +1,13 @@
 package com.antonhulevich.eshop.service;
 
 import com.antonhulevich.eshop.dao.UserRepository;
+import com.antonhulevich.eshop.domain.Bucket;
 import com.antonhulevich.eshop.domain.Role;
 import com.antonhulevich.eshop.domain.User;
 import com.antonhulevich.eshop.dto.UserDto;
 import com.antonhulevich.eshop.mapper.UserMapper;
 import jakarta.transaction.Transactional;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +18,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -39,27 +41,17 @@ public class UserServiceImpl implements UserService{
         if(!userDto.getPassword().equals(userDto.getMatchingPassword())){
             throw new RuntimeException("Password is not equals");
         }
+        if (userRepository.findFirstByName(userDto.getName()) != null) {
+            throw new RuntimeException("User with name " + userDto.getName() + " already exists");
+        }
+        if (userRepository.findFirstByEmail(userDto.getEmail()) != null) {
+            throw new RuntimeException("User with email " + userDto.getEmail() + " already exists");
+        }
 
         User user = userMapper.toEntity(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setRole(Role.ROLE_CLIENT);
         user.setActivateCode(UUID.randomUUID().toString());
-
-        this.save(user);
-        return true;
-    }
-
-    @Override
-    @Transactional
-    public void save(User user) {
-        if (userRepository.findFirstByName(user.getName()) != null) {
-            throw new RuntimeException("User with name " + user.getName() + " already exists");
-        }
-
-        if (userRepository.findFirstByEmail(user.getEmail()) != null) {
-            throw new RuntimeException("User with email " + user.getEmail() + " already exists");
-        }
-
         user.setCreatedAt(LocalDateTime.now());
 
         userRepository.save(user);
@@ -67,6 +59,19 @@ public class UserServiceImpl implements UserService{
         if(user.getActivateCode() != null && !user.getActivateCode().isEmpty()){
             mailSenderService.sendActivateCode(user);
         }
+
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public void assignBucketToUser(String username, Bucket bucket) {
+        User user = userRepository.findFirstByName(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User Not Found With Name: " + username);
+        }
+        user.setBucked(bucket);
+        userRepository.save(user);
     }
 
     @Override
@@ -113,10 +118,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional
-    public void updateProfile(UserDto userDto) {
+    public void updateProfile(UserDto userDto, String currentUsername) {
+        if (!Objects.equals(currentUsername, userDto.getName())) {
+            throw new AccessDeniedException("You cannot change the user name");
+        }
+
         User savedUser = userRepository.findFirstByName(userDto.getName());
+
         if(savedUser == null){
             throw new RuntimeException("User with name " + userDto.getName() + "not foud");
+        }
+
+        if (!Objects.equals(savedUser.getEmail(), userDto.getEmail())) {
+            throw new IllegalArgumentException("You cannot change the email");
         }
 
         boolean isChanged = false;
