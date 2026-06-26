@@ -1,0 +1,415 @@
+2026-06-26T15:14:38.006+03:00  INFO 15536 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Starting EshopApplication using Java 25-ea with PID 15536 (D:\all my project\26.10.25\eshop\eshop\eshop-microservices\eshop\target\classes started by admin in D:\all my project\26.10.25\eshop\eshop\eshop-microservices)
+2026-06-26T15:14:38.008+03:00  INFO 15536 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-26T15:14:38.086+03:00  INFO 15536 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26T15:14:38.087+03:00  INFO 15536 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26T15:14:39.499+03:00  INFO 15536 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26T15:14:39.644+03:00  INFO 15536 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 133 ms. Found 4 JPA repository interfaces.
+2026-06-26T15:14:39.877+03:00  INFO 15536 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-06-26T15:14:39.885+03:00  INFO 15536 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-06-26T15:14:40.829+03:00  INFO 15536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-26T15:14:40.846+03:00  INFO 15536 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-26T15:14:40.847+03:00  INFO 15536 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-06-26T15:14:40.915+03:00  INFO 15536 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-26T15:14:40.916+03:00  INFO 15536 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2827 ms
+2026-06-26T15:14:41.329+03:00  INFO 15536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-26T15:14:41.679+03:00  INFO 15536 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1278ae63
+2026-06-26T15:14:41.681+03:00  INFO 15536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-26T15:14:41.740+03:00  INFO 15536 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/eshop_db (MySQL 8.0)
+2026-06-26T15:14:41.819+03:00  INFO 15536 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.049s)
+2026-06-26T15:14:41.842+03:00  INFO 15536 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `eshop_db`: 9
+2026-06-26T15:14:41.846+03:00  INFO 15536 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `eshop_db` is up to date. No migration necessary.
+2026-06-26T15:14:42.004+03:00  INFO 15536 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-26T15:14:42.049+03:00  INFO 15536 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-06-26T15:14:42.086+03:00  INFO 15536 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-26T15:14:42.366+03:00  INFO 15536 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26T15:14:42.436+03:00  INFO 15536 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26T15:14:43.314+03:00  INFO 15536 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26T15:14:43.354+03:00  INFO 15536 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:14:43.762+03:00  INFO 15536 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26T15:14:44.712+03:00  WARN 15536 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26T15:14:44.809+03:00  INFO 15536 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-26T15:14:45.440+03:00  INFO 15536 --- [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-26T15:14:45.441+03:00  WARN 15536 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-26T15:14:45.713+03:00  INFO 15536 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-26T15:14:46.260+03:00  INFO 15536 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-26T15:14:46.350+03:00  INFO 15536 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:14:46.350+03:00  INFO 15536 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-06-26T15:14:46.351+03:00  INFO 15536 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:14:46.351+03:00  INFO 15536 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:14:46.351+03:00  INFO 15536 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 1 subscriber(s).
+2026-06-26T15:14:46.351+03:00  INFO 15536 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:14:46.352+03:00  INFO 15536 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-26T15:14:46.353+03:00  INFO 15536 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@19416e4a]]
+2026-06-26T15:14:46.355+03:00  INFO 15536 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-26T15:14:46.379+03:00  INFO 15536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-26T15:14:46.392+03:00  INFO 15536 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Started EshopApplication in 8.981 seconds (process running for 10.026)
+2026-06-26T15:14:50.740+03:00  INFO 15536 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-26T15:14:50.740+03:00  INFO 15536 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-26T15:14:50.742+03:00  INFO 15536 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-26T15:14:50.805+03:00  INFO 15536 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:14:50.806+03:00  INFO 15536 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:14:51.263+03:00  INFO 15536 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:14:51.265+03:00  INFO 15536 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:14:52.464+03:00  INFO 15536 --- [http-nio-8080-exec-4] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:14:52.464+03:00  INFO 15536 --- [http-nio-8080-exec-4] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:14:52.522+03:00  INFO 15536 --- [http-nio-8080-exec-5] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:14:52.522+03:00  INFO 15536 --- [http-nio-8080-exec-5] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:14:57.437+03:00  INFO 15536 --- [http-nio-8080-exec-8] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:14:57.437+03:00  INFO 15536 --- [http-nio-8080-exec-8] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:14:57.502+03:00  WARN 15536 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:14:59.994+03:00  INFO 15536 --- [http-nio-8080-exec-10] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.usersList() with arguments: [{}]
+2026-06-26T15:15:00.152+03:00  WARN 15536 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:15:00.545+03:00  INFO 15536 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:15:00.552+03:00  INFO 15536 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:15:00.661+03:00  WARN 15536 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:15:02.682+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-26T15:15:02.690+03:00  INFO 15536 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-26T15:15:02.693+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-26T15:15:02.693+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@19416e4a]]
+2026-06-26T15:15:02.693+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-26T15:15:02.693+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:15:02.694+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 0 subscriber(s).
+2026-06-26T15:15:02.694+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:15:02.694+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:15:02.694+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-06-26T15:15:02.694+03:00  INFO 15536 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:15:02.699+03:00  INFO 15536 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:15:02.704+03:00  INFO 15536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-26T15:15:02.714+03:00  INFO 15536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-26T15:16:23.160+03:00  INFO 14084 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Starting EshopApplication using Java 25-ea with PID 14084 (D:\all my project\26.10.25\eshop-microservices\eshop\target\classes started by admin in D:\all my project\26.10.25\eshop-microservices)
+2026-06-26T15:16:23.164+03:00  INFO 14084 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-26T15:16:23.222+03:00  INFO 14084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26T15:16:23.222+03:00  INFO 14084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26T15:16:24.453+03:00  INFO 14084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26T15:16:24.610+03:00  INFO 14084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 145 ms. Found 4 JPA repository interfaces.
+2026-06-26T15:16:24.848+03:00  INFO 14084 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-06-26T15:16:24.852+03:00  INFO 14084 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-06-26T15:16:25.763+03:00  INFO 14084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-26T15:16:25.782+03:00  INFO 14084 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-26T15:16:25.782+03:00  INFO 14084 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-06-26T15:16:25.849+03:00  INFO 14084 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-26T15:16:25.850+03:00  INFO 14084 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2626 ms
+2026-06-26T15:16:26.226+03:00  INFO 14084 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-26T15:16:26.562+03:00  INFO 14084 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29cfeec7
+2026-06-26T15:16:26.564+03:00  INFO 14084 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-26T15:16:26.617+03:00  INFO 14084 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/eshop_db (MySQL 8.0)
+2026-06-26T15:16:26.694+03:00  INFO 14084 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.046s)
+2026-06-26T15:16:26.715+03:00  INFO 14084 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `eshop_db`: 9
+2026-06-26T15:16:26.722+03:00  INFO 14084 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `eshop_db` is up to date. No migration necessary.
+2026-06-26T15:16:26.894+03:00  INFO 14084 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-26T15:16:26.937+03:00  INFO 14084 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-06-26T15:16:26.967+03:00  INFO 14084 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-26T15:16:27.209+03:00  INFO 14084 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26T15:16:27.296+03:00  INFO 14084 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26T15:16:28.161+03:00  INFO 14084 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26T15:16:28.198+03:00  INFO 14084 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:16:28.702+03:00  INFO 14084 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26T15:16:29.640+03:00  WARN 14084 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26T15:16:29.745+03:00  INFO 14084 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-26T15:16:30.475+03:00  INFO 14084 --- [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-26T15:16:30.476+03:00  WARN 14084 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-26T15:16:30.727+03:00  INFO 14084 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-26T15:16:31.318+03:00  INFO 14084 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-26T15:16:31.446+03:00  INFO 14084 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:16:31.448+03:00  INFO 14084 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-06-26T15:16:31.449+03:00  INFO 14084 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:16:31.449+03:00  INFO 14084 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:16:31.449+03:00  INFO 14084 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 1 subscriber(s).
+2026-06-26T15:16:31.449+03:00  INFO 14084 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:16:31.451+03:00  INFO 14084 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-26T15:16:31.453+03:00  INFO 14084 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@67a1b45c]]
+2026-06-26T15:16:31.454+03:00  INFO 14084 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-26T15:16:31.487+03:00  INFO 14084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-26T15:16:31.504+03:00  INFO 14084 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Started EshopApplication in 8.949 seconds (process running for 9.701)
+2026-06-26T15:17:31.153+03:00  INFO 14084 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-26T15:17:31.153+03:00  INFO 14084 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-26T15:17:31.167+03:00  INFO 14084 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-26T15:17:31.211+03:00  INFO 14084 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:17:31.211+03:00  INFO 14084 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:17:31.444+03:00  INFO 14084 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[unknown], outboundChannel[unknown], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-26T15:17:31.707+03:00  INFO 14084 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:17:31.707+03:00  INFO 14084 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:17:35.138+03:00  INFO 14084 --- [http-nio-8080-exec-10] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:17:35.138+03:00  INFO 14084 --- [http-nio-8080-exec-10] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:17:35.194+03:00  INFO 14084 --- [http-nio-8080-exec-6] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:17:35.194+03:00  INFO 14084 --- [http-nio-8080-exec-6] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:17:39.406+03:00  INFO 14084 --- [http-nio-8080-exec-8] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:17:39.407+03:00  INFO 14084 --- [http-nio-8080-exec-8] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:17:39.467+03:00  WARN 14084 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:17:41.958+03:00  INFO 14084 --- [http-nio-8080-exec-4] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:17:42.076+03:00  WARN 14084 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:17:42.790+03:00  INFO 14084 --- [http-nio-8080-exec-1] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.usersList() with arguments: [{}]
+2026-06-26T15:17:42.934+03:00  WARN 14084 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:17:43.401+03:00  INFO 14084 --- [http-nio-8080-exec-10] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:17:43.408+03:00  INFO 14084 --- [http-nio-8080-exec-10] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:17:43.520+03:00  WARN 14084 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:06.164+03:00  INFO 20840 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Starting EshopApplication using Java 25-ea with PID 20840 (D:\all my project\26.10.25\eshop-microservices\eshop\target\classes started by admin in D:\all my project\26.10.25\eshop-microservices)
+2026-06-26T15:28:06.168+03:00  INFO 20840 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-26T15:28:06.226+03:00  INFO 20840 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26T15:28:06.228+03:00  INFO 20840 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26T15:28:07.423+03:00  INFO 20840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26T15:28:07.576+03:00  INFO 20840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 140 ms. Found 4 JPA repository interfaces.
+2026-06-26T15:28:07.815+03:00  INFO 20840 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-06-26T15:28:07.819+03:00  INFO 20840 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-06-26T15:28:08.773+03:00  INFO 20840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-26T15:28:08.793+03:00  INFO 20840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-26T15:28:08.793+03:00  INFO 20840 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-06-26T15:28:08.857+03:00  INFO 20840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-26T15:28:08.857+03:00  INFO 20840 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2629 ms
+2026-06-26T15:28:09.256+03:00  INFO 20840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-26T15:28:09.590+03:00  INFO 20840 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bbbb5c0
+2026-06-26T15:28:09.592+03:00  INFO 20840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-26T15:28:09.644+03:00  INFO 20840 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/eshop_db (MySQL 8.0)
+2026-06-26T15:28:09.721+03:00  INFO 20840 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.046s)
+2026-06-26T15:28:09.746+03:00  INFO 20840 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `eshop_db`: 9
+2026-06-26T15:28:09.751+03:00  INFO 20840 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `eshop_db` is up to date. No migration necessary.
+2026-06-26T15:28:09.949+03:00  INFO 20840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-26T15:28:10.013+03:00  INFO 20840 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-06-26T15:28:10.059+03:00  INFO 20840 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-26T15:28:10.393+03:00  INFO 20840 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26T15:28:10.464+03:00  INFO 20840 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26T15:28:11.527+03:00  INFO 20840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26T15:28:11.565+03:00  INFO 20840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:28:12.234+03:00  INFO 20840 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26T15:28:13.461+03:00  WARN 20840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26T15:28:13.592+03:00  INFO 20840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-26T15:28:14.287+03:00  INFO 20840 --- [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-26T15:28:14.288+03:00  WARN 20840 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-26T15:28:14.568+03:00  INFO 20840 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-26T15:28:15.139+03:00  INFO 20840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-26T15:28:15.237+03:00  INFO 20840 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:28:15.238+03:00  INFO 20840 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-06-26T15:28:15.239+03:00  INFO 20840 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:28:15.239+03:00  INFO 20840 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:28:15.239+03:00  INFO 20840 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 1 subscriber(s).
+2026-06-26T15:28:15.239+03:00  INFO 20840 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:28:15.240+03:00  INFO 20840 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-26T15:28:15.241+03:00  INFO 20840 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@356906cb]]
+2026-06-26T15:28:15.243+03:00  INFO 20840 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-26T15:28:15.268+03:00  INFO 20840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-26T15:28:15.281+03:00  INFO 20840 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Started EshopApplication in 9.833 seconds (process running for 10.658)
+2026-06-26T15:28:21.527+03:00  INFO 20840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-26T15:28:21.527+03:00  INFO 20840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-26T15:28:21.530+03:00  INFO 20840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-26T15:28:21.593+03:00  INFO 20840 --- [http-nio-8080-exec-4] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:28:21.593+03:00  INFO 20840 --- [http-nio-8080-exec-4] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:28:22.054+03:00  INFO 20840 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.login() with arguments: []
+2026-06-26T15:28:22.054+03:00  INFO 20840 --- [http-nio-8080-exec-2] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.login()
+2026-06-26T15:28:27.072+03:00  INFO 20840 --- [http-nio-8080-exec-6] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:28:27.083+03:00  INFO 20840 --- [http-nio-8080-exec-6] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:28:27.232+03:00  WARN 20840 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:29.290+03:00  INFO 20840 --- [http-nio-8080-exec-5] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:28:29.293+03:00  INFO 20840 --- [http-nio-8080-exec-5] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:28:29.384+03:00  WARN 20840 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:29.711+03:00  INFO 20840 --- [http-nio-8080-exec-6] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.usersList() with arguments: [{}]
+2026-06-26T15:28:29.853+03:00  WARN 20840 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:30.141+03:00  INFO 20840 --- [http-nio-8080-exec-9] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:28:30.240+03:00  WARN 20840 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:30.570+03:00  INFO 20840 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:28:30.577+03:00  INFO 20840 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:28:30.652+03:00  WARN 20840 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:30.915+03:00  INFO 20840 --- [http-nio-8080-exec-1] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:28:30.916+03:00  INFO 20840 --- [http-nio-8080-exec-1] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:28:30.962+03:00  WARN 20840 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:32.051+03:00  INFO 20840 --- [http-nio-8080-exec-5] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.profileUser() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:28:32.133+03:00  WARN 20840 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:28:39.325+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-26T15:28:39.331+03:00  INFO 20840 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-26T15:28:39.335+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-26T15:28:39.335+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@356906cb]]
+2026-06-26T15:28:39.335+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-26T15:28:39.335+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:28:39.336+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 0 subscriber(s).
+2026-06-26T15:28:39.336+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:28:39.336+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:28:39.336+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-06-26T15:28:39.336+03:00  INFO 20840 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:28:39.344+03:00  INFO 20840 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:28:39.347+03:00  INFO 20840 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-26T15:28:39.357+03:00  INFO 20840 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-26T15:36:55.385+03:00  INFO 20116 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Starting EshopApplication using Java 25-ea with PID 20116 (D:\all my project\26.10.25\eshop-microservices\eshop\target\classes started by admin in D:\all my project\26.10.25\eshop-microservices)
+2026-06-26T15:36:55.388+03:00  INFO 20116 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-26T15:36:55.442+03:00  INFO 20116 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26T15:36:55.442+03:00  INFO 20116 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26T15:36:56.626+03:00  INFO 20116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26T15:36:56.772+03:00  INFO 20116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 134 ms. Found 4 JPA repository interfaces.
+2026-06-26T15:36:57.017+03:00  INFO 20116 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-06-26T15:36:57.022+03:00  INFO 20116 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-06-26T15:36:57.957+03:00  INFO 20116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-26T15:36:57.974+03:00  INFO 20116 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-26T15:36:57.974+03:00  INFO 20116 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-06-26T15:36:58.037+03:00  INFO 20116 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-26T15:36:58.038+03:00  INFO 20116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2595 ms
+2026-06-26T15:36:58.425+03:00  INFO 20116 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-26T15:36:58.774+03:00  INFO 20116 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17b8555
+2026-06-26T15:36:58.776+03:00  INFO 20116 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-26T15:36:58.831+03:00  INFO 20116 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/eshop_db (MySQL 8.0)
+2026-06-26T15:36:58.897+03:00  INFO 20116 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.039s)
+2026-06-26T15:36:58.916+03:00  INFO 20116 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `eshop_db`: 9
+2026-06-26T15:36:58.921+03:00  INFO 20116 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `eshop_db` is up to date. No migration necessary.
+2026-06-26T15:36:59.074+03:00  INFO 20116 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-26T15:36:59.121+03:00  INFO 20116 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-06-26T15:36:59.158+03:00  INFO 20116 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-26T15:36:59.427+03:00  INFO 20116 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26T15:36:59.505+03:00  INFO 20116 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26T15:37:00.379+03:00  INFO 20116 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26T15:37:00.414+03:00  INFO 20116 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:37:00.813+03:00  INFO 20116 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26T15:37:01.891+03:00  WARN 20116 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26T15:37:01.995+03:00  INFO 20116 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-26T15:37:02.745+03:00  INFO 20116 --- [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-26T15:37:02.746+03:00  WARN 20116 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-26T15:37:03.015+03:00  INFO 20116 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-26T15:37:03.590+03:00  INFO 20116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-26T15:37:03.685+03:00  INFO 20116 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:37:03.686+03:00  INFO 20116 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-06-26T15:37:03.687+03:00  INFO 20116 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:37:03.687+03:00  INFO 20116 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:37:03.687+03:00  INFO 20116 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 1 subscriber(s).
+2026-06-26T15:37:03.687+03:00  INFO 20116 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:37:03.688+03:00  INFO 20116 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-26T15:37:03.689+03:00  INFO 20116 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@bef2833]]
+2026-06-26T15:37:03.691+03:00  INFO 20116 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-26T15:37:03.717+03:00  INFO 20116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-26T15:37:03.731+03:00  INFO 20116 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Started EshopApplication in 9.02 seconds (process running for 9.835)
+2026-06-26T15:37:25.402+03:00  INFO 20116 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-26T15:37:25.402+03:00  INFO 20116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-26T15:37:25.402+03:00  INFO 20116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-06-26T15:37:25.464+03:00  INFO 20116 --- [http-nio-8080-exec-1] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.profileUser() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:37:25.998+03:00  WARN 20116 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:37:27.680+03:00  INFO 20116 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB REQ -> Call: MainController.index() with arguments: []
+2026-06-26T15:37:27.681+03:00  INFO 20116 --- [http-nio-8080-exec-3] c.a.e.a.MainControllerLoggingAspect      : WEB RES -> Successfully finished: MainController.index()
+2026-06-26T15:37:27.734+03:00  WARN 20116 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:37:28.382+03:00  INFO 20116 --- [http-nio-8080-exec-5] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:37:28.392+03:00  INFO 20116 --- [http-nio-8080-exec-5] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:37:28.512+03:00  WARN 20116 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:37:29.258+03:00  INFO 20116 --- [http-nio-8080-exec-2] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.usersList() with arguments: [{}]
+2026-06-26T15:37:29.406+03:00  WARN 20116 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:37:31.094+03:00  INFO 20116 --- [http-nio-8080-exec-9] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:37:31.180+03:00  WARN 20116 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:37:32.684+03:00  INFO 20116 --- [http-nio-8080-exec-8] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.commitBucket() with arguments: [org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:37:33.035+03:00  WARN 20116 --- [http-nio-8080-exec-8] c.a.e.a.UserControllerLoggingAspect      : PERF -> Heavy POST request commitBucket took 351 ms
+2026-06-26T15:37:33.035+03:00  WARN 20116 --- [http-nio-8080-exec-8] c.a.e.a.BucketControllerLoggingAspect    : PERF -> Heavy POST request commitBucket took 351 ms
+2026-06-26T15:37:33.058+03:00  INFO 20116 --- [http-nio-8080-exec-1] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:37:33.135+03:00  WARN 20116 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:38:03.684+03:00  INFO 20116 --- [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[unknown], outboundChannel[unknown], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 1, completed tasks = 8]
+2026-06-26T15:45:25.768+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-26T15:45:25.778+03:00  INFO 20116 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-26T15:45:25.782+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-26T15:45:25.783+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@bef2833]]
+2026-06-26T15:45:25.783+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-26T15:45:25.783+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:45:25.783+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 0 subscriber(s).
+2026-06-26T15:45:25.784+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:45:25.784+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:45:25.784+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2026-06-26T15:45:25.784+03:00  INFO 20116 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:45:25.790+03:00  INFO 20116 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:45:25.794+03:00  INFO 20116 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-26T15:45:25.802+03:00  INFO 20116 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-26T15:46:32.809+03:00  INFO 20472 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Starting EshopApplication using Java 25-ea with PID 20472 (D:\all my project\26.10.25\eshop-microservices\eshop\target\classes started by admin in D:\all my project\26.10.25\eshop-microservices)
+2026-06-26T15:46:32.812+03:00  INFO 20472 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-26T15:46:32.891+03:00  INFO 20472 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26T15:46:32.893+03:00  INFO 20472 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26T15:46:34.173+03:00  INFO 20472 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26T15:46:34.336+03:00  INFO 20472 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 150 ms. Found 4 JPA repository interfaces.
+2026-06-26T15:46:34.604+03:00  INFO 20472 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2026-06-26T15:46:34.604+03:00  INFO 20472 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2026-06-26T15:46:35.633+03:00  INFO 20472 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-26T15:46:35.648+03:00  INFO 20472 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-26T15:46:35.649+03:00  INFO 20472 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-06-26T15:46:35.711+03:00  INFO 20472 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-26T15:46:35.711+03:00  INFO 20472 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2817 ms
+2026-06-26T15:46:36.159+03:00  INFO 20472 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-26T15:46:36.512+03:00  INFO 20472 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37e1890b
+2026-06-26T15:46:36.514+03:00  INFO 20472 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-26T15:46:36.568+03:00  INFO 20472 --- [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/eshop_db (MySQL 8.0)
+2026-06-26T15:46:36.641+03:00  INFO 20472 --- [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.042s)
+2026-06-26T15:46:36.664+03:00  INFO 20472 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `eshop_db`: 9
+2026-06-26T15:46:36.670+03:00  INFO 20472 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `eshop_db` is up to date. No migration necessary.
+2026-06-26T15:46:36.821+03:00  INFO 20472 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-26T15:46:36.880+03:00  INFO 20472 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-06-26T15:46:36.914+03:00  INFO 20472 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-26T15:46:37.148+03:00  INFO 20472 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26T15:46:37.229+03:00  INFO 20472 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26T15:46:38.102+03:00  INFO 20472 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26T15:46:38.137+03:00  INFO 20472 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26T15:46:38.591+03:00  INFO 20472 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26T15:46:39.528+03:00  WARN 20472 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26T15:46:39.641+03:00  INFO 20472 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-26T15:46:40.309+03:00  INFO 20472 --- [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-26T15:46:40.310+03:00  WARN 20472 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-26T15:46:40.569+03:00  INFO 20472 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-26T15:46:41.129+03:00  INFO 20472 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-26T15:46:41.216+03:00  INFO 20472 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2026-06-26T15:46:41.217+03:00  INFO 20472 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2026-06-26T15:46:41.217+03:00  INFO 20472 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2026-06-26T15:46:41.218+03:00  INFO 20472 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {http:outbound-channel-adapter:ordersAdapter} as a subscriber to the 'ordersChannel' channel
+2026-06-26T15:46:41.218+03:00  INFO 20472 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.ordersChannel' has 1 subscriber(s).
+2026-06-26T15:46:41.218+03:00  INFO 20472 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'ordersAdapter'; defined in: 'class path resource [integration/http-orders-integration.xml]'; from source: ''int-http:outbound-channel-adapter' with id='ordersAdapter''
+2026-06-26T15:46:41.219+03:00  INFO 20472 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-26T15:46:41.221+03:00  INFO 20472 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7336d465]]
+2026-06-26T15:46:41.223+03:00  INFO 20472 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-26T15:46:41.251+03:00  INFO 20472 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-26T15:46:41.267+03:00  INFO 20472 --- [restartedMain] c.antonhulevich.eshop.EshopApplication   : Started EshopApplication in 9.099 seconds (process running for 9.764)
+2026-06-26T15:46:46.278+03:00  INFO 20472 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-26T15:46:46.278+03:00  INFO 20472 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-26T15:46:46.278+03:00  INFO 20472 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-06-26T15:46:46.328+03:00  INFO 20472 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:46:46.424+03:00  INFO 20472 --- [http-nio-8080-exec-1] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:46:47.001+03:00  WARN 20472 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:48.484+03:00  INFO 20472 --- [http-nio-8080-exec-10] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:46:48.618+03:00  WARN 20472 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:49.523+03:00  INFO 20472 --- [http-nio-8080-exec-4] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:46:49.538+03:00  INFO 20472 --- [http-nio-8080-exec-4] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:46:49.633+03:00  WARN 20472 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:51.117+03:00  INFO 20472 --- [http-nio-8080-exec-4] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:46:51.185+03:00  WARN 20472 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:52.211+03:00  INFO 20472 --- [http-nio-8080-exec-8] c.a.e.a.UserControllerLoggingAspect      : WEB REQ -> Call: UserController.usersList() with arguments: [{}]
+2026-06-26T15:46:52.378+03:00  WARN 20472 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:53.080+03:00  INFO 20472 --- [http-nio-8080-exec-7] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:46:53.085+03:00  INFO 20472 --- [http-nio-8080-exec-7] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:46:53.181+03:00  WARN 20472 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:54.041+03:00  INFO 20472 --- [http-nio-8080-exec-7] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.addBucket() with arguments: [8, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:46:54.120+03:00  INFO 20472 --- [http-nio-8080-exec-7] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.addBucket()
+2026-06-26T15:46:54.134+03:00  INFO 20472 --- [http-nio-8080-exec-10] c.a.e.a.ProductControllerLoggingAspect   : WEB REQ -> Call: ProductController.list() with arguments: [{}]
+2026-06-26T15:46:54.139+03:00  INFO 20472 --- [http-nio-8080-exec-10] c.a.e.a.ProductControllerLoggingAspect   : WEB RES -> Successfully finished: ProductController.list()
+2026-06-26T15:46:54.231+03:00  WARN 20472 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:46:54.669+03:00  INFO 20472 --- [http-nio-8080-exec-1] c.a.e.a.BucketControllerLoggingAspect    : WEB REQ -> Call: BucketController.aboutBucket() with arguments: [{}, org.springframework.security.core.userdetails.User [Username=admin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]]]
+2026-06-26T15:46:54.748+03:00  WARN 20472 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-26T15:47:41.213+03:00  INFO 20472 --- [MessageBroker-12] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 4 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(4)-CONNECTED(4)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[unknown], outboundChannel[unknown], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 1, completed tasks = 11]
