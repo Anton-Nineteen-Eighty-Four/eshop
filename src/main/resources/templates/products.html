@@ -33,7 +33,7 @@
     </tr>
 </table>
 
-<form style="text-align: center" sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
+<div style="text-align: center" sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
     <h3>Add New Product</h3>
     <table align="center">
         <tr>
@@ -45,8 +45,8 @@
             <td><input type="number" id="price"></td>
         </tr>
     </table>
-    <button id="send" type="submit">Submit</button>
-</form>
+    <button id="send" type="button">Submit</button>
+</div>
 
 </body>
 </html>

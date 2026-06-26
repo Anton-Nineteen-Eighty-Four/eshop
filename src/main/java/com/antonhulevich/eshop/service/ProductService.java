@@ -10,4 +10,5 @@ public interface ProductService {
     void addProduct(ProductDto dto);
     ProductDto getById(Long id);
     void delete(Long id);
+    List<ProductDto> getNonArchivedProducts();
 }

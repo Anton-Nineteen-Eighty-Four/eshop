@@ -58,13 +58,13 @@ public class ProductServiceImpl implements ProductService {
         Product product = mapper.toProduct(dto);
         Product savedProduct = productRepository.save(product);
         template.convertAndSend("/topic/products",
-                ProductMapper.MAPPER.fromProduct(savedProduct));
+                this.mapper.fromProduct(savedProduct));
     }
 
     @Override
     public ProductDto getById(Long id) {
         Product product = productRepository.findById(id).orElse(new Product());
-        return ProductMapper.MAPPER.fromProduct(product);
+        return this.mapper.fromProduct(product);
     }
 
     @Override
@@ -74,5 +74,12 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         product.setArchive(true);
         productRepository.save(product);
+    }
+
+    @Override
+    public List<ProductDto> getNonArchivedProducts() {
+        List<Product> productList = productRepository.findAllByArchiveFalse();
+        List<ProductDto> productDtoList = mapper.fromProductList(productList);
+        return productDtoList;
     }
 }
