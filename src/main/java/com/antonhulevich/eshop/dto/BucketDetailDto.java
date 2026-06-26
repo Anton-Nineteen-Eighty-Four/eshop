@@ -10,12 +10,12 @@ public class BucketDetailDto {
     private Long productId;
     private BigDecimal price;
     private BigDecimal amount;
-    private Double sum;
+    private BigDecimal sum;
 
     public BucketDetailDto() {
     }
 
-    public BucketDetailDto(String title, Long productId, BigDecimal price, BigDecimal amount, Double sum) {
+    public BucketDetailDto(String title, Long productId, BigDecimal price, BigDecimal amount, BigDecimal sum) {
         this.title = title;
         this.productId = productId;
         this.price = price;
@@ -27,10 +27,9 @@ public class BucketDetailDto {
         this.title = product.getTitle();
         this.productId = product.getId();
         this.price = product.getPrice();
-        this.amount = new BigDecimal(1.0);
-        this.sum = Double.valueOf(product.getPrice().toString());
+        this.amount = BigDecimal.ONE;
+        this.sum = product.getPrice();
     }
-
     public String getTitle() {
         return title;
     }
@@ -63,11 +62,11 @@ public class BucketDetailDto {
         this.amount = amount;
     }
 
-    public Double getSum() {
+    public BigDecimal getSum() {
         return sum;
     }
 
-    public void setSum(Double sum) {
+    public void setSum(BigDecimal sum) {
         this.sum = sum;
     }
 }

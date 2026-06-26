@@ -5,8 +5,8 @@ import com.antonhulevich.eshop.dao.ProductRepository;
 import com.antonhulevich.eshop.domain.*;
 import com.antonhulevich.eshop.dto.BucketDetailDto;
 import com.antonhulevich.eshop.dto.BucketDto;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -38,6 +38,7 @@ public class BucketServiceImpl implements BucketService{
     }
 
     @Override
+    @Transactional
     public void addProducts(Bucket bucket, List<Long> productIds) {
         List<Product> productList = bucket.getProducts();
 
@@ -58,14 +59,15 @@ public class BucketServiceImpl implements BucketService{
     private List<Product> getCollectRefProductsByIds(List<Long> productIds){
         List<Product> productList =
                 productIds.stream()
-                        //метод .getOne возвращает ссылку на объект в отличие от метода findById который возвращает объект целиком
-                        .map(id -> productRepository.getOne(id))
+                        .map(productRepository::getReferenceById)
                         .collect(Collectors.toList());
         return productList;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public BucketDto getBucketDtoByUser(String name) {
+
         User user = userService.getUserByName(name);
 
         if(user == null || user.getBucked() == null){
@@ -83,8 +85,8 @@ public class BucketServiceImpl implements BucketService{
             if(detail == null){
                 mapByProductId.put(product.getId(), new BucketDetailDto(product));
             } else {
-                detail.setAmount(detail.getAmount().add(new BigDecimal(1.0)));
-                detail.setSum(detail.getSum() + Double.valueOf(product.getPrice().toString()));
+                detail.setAmount(detail.getAmount().add(BigDecimal.ONE));
+                detail.setSum(detail.getSum().add(product.getPrice()));
             }
         }
 
@@ -94,15 +96,21 @@ public class BucketServiceImpl implements BucketService{
         return bucketDto ;
     }
 
+    @Override
+    @Transactional
     public void deleteProduct(String name, Long productId){
-        Bucket bucket = userService.getUserByName(name).getBucked();
+        User user = userService.getUserByName(name);
+        if (user == null || user.getBucked() == null) {
+            return;
+        }
+
+        Bucket bucket = user.getBucked();
         List<Product> productList = bucket.getProducts();
-        String title = productRepository.getById(productId).getTitle();
 
         Product productToRemove = null;
 
         for (Product p : productList) {
-            if (Objects.equals(title, p.getTitle())) {
+            if (Objects.equals(productId, p.getId())) {
                 productToRemove = p;
                 break;
             }
@@ -139,9 +147,9 @@ public class BucketServiceImpl implements BucketService{
                 .map(pair -> new OrderDetails(order, pair.getKey(), pair.getValue()))
                 .collect(Collectors.toList());
 
-        BigDecimal total = new BigDecimal(orderDetails.stream()
+        BigDecimal total = orderDetails.stream()
                 .map(detail -> detail.getPrice().multiply(detail.getAmount()))
-                .mapToDouble(BigDecimal::doubleValue).sum());
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         order.setDetails(orderDetails);
         order.setSum(total);

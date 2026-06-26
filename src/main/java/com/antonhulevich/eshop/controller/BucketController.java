@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.security.Principal;
-
 @Controller
 public class BucketController {
     private final BucketService bucketService;
@@ -28,15 +26,15 @@ public class BucketController {
     }
 
     @PostMapping("/bucket/remove/{productId}")
-    public String removeProductFromBucket(@PathVariable Long productId, Principal principal){
-        bucketService.deleteProduct(principal.getName(), productId);
+    public String removeProductFromBucket(@PathVariable Long productId,  @AuthenticationPrincipal UserDetails currentUser){
+        bucketService.deleteProduct(currentUser.getUsername(), productId);
         return "redirect:/bucket";
     }
 
     @PostMapping("/bucket")
-    public String commitBucket(Model model, Principal principal){
-        if(principal != null){
-            bucketService.commitBucketToOrder(principal.getName());
+    public String commitBucket(@AuthenticationPrincipal UserDetails currentUser){
+        if(currentUser != null){
+            bucketService.commitBucketToOrder(currentUser.getUsername());
         }
         return "redirect:/bucket";
     }

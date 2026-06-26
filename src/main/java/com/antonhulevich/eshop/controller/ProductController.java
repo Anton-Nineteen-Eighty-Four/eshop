@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id){
         productService.delete(id);
         return "redirect:/products";

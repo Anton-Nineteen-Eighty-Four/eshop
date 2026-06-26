@@ -1,29 +1,28 @@
 package com.antonhulevich.eshop.dto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BucketDto {
-
     private int amountProducts;
-    private Double sum;
+    private BigDecimal sum = BigDecimal.ZERO;
     private List<BucketDetailDto> bucketDetail = new ArrayList<>();
 
     public BucketDto() {
     }
 
-    public BucketDto(int amountProducts, Double sum, List<BucketDetailDto> bucketDetail) {
+    public BucketDto(int amountProducts, BigDecimal sum, List<BucketDetailDto> bucketDetail) {
         this.amountProducts = amountProducts;
         this.sum = sum;
         this.bucketDetail = bucketDetail;
     }
 
-    public void aggregate(){
+    public void aggregate() {
         this.amountProducts = bucketDetail.size();
         this.sum = bucketDetail.stream()
                 .map(BucketDetailDto::getSum)
-                .mapToDouble(Double::doubleValue)
-                .sum();
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public int getAmountProducts() {
@@ -34,11 +33,11 @@ public class BucketDto {
         this.amountProducts = amountProducts;
     }
 
-    public Double getSum() {
+    public BigDecimal getSum() {
         return sum;
     }
 
-    public void setSum(Double sum) {
+    public void setSum(BigDecimal sum) {
         this.sum = sum;
     }
 
